@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.widget.Toolbar
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
@@ -32,7 +35,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.bhoomi.Navigation.StartNavigation
 import com.bhoomi.Screens.DashbordIcons
+import com.bhoomi.Screens.FirstScreen
+import com.bhoomi.Screens.Toolbar
 import com.bhoomi.ui.theme.BhoomiTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,11 +50,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             BhoomiTheme {
                 // A surface container using the 'background' color from the theme
-                Surface() {
+                Surface(modifier = Modifier.background(color = Color.White)) {
                     Scaffold(
-                        bottomBar = { BottomNav() },
-                        containerColor = Color(0XFFf8f8f8),
-                        floatingActionButton = {
+                        topBar = { Toolbar()},bottomBar = {  },
+                        contentColor = Color(0xFFFFFFFF),
+                        containerColor = Color(0xFFFFFFFF)
+/*                        floatingActionButton = {
                             FloatingActionButton(
                                 onClick = {},
                                 modifier = Modifier.padding(bottom = 10.dp),
@@ -59,13 +67,14 @@ class MainActivity : ComponentActivity() {
                                     contentDescription = "Home"
                                 )
                             }
-                        },
-                        floatingActionButtonPosition = FabPosition.Center
+                        }*/
+                        //floatingActionButtonPosition = FabPosition.Center
                         // floatingActionButtonPosition = FabPosition.Center
                     ) {
                         Column(modifier = Modifier.fillMaxSize()) {
-
+                            StartNavigation()
                         }
+
                     }
                 }
             }
