@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CornerSize
@@ -24,6 +25,8 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -39,6 +42,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.style.TextOverflow.Companion.Visible
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -131,7 +135,26 @@ class LoginActivity : ComponentActivity() {
                 shape = RoundedCornerShape(CornerSize(10.dp))
             )
 
-            Button(shape =ButtonDefaults.filledTonalShape,
+
+            FloatingActionButton(
+                onClick = {
+                    val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                    startActivity(intent)
+                }, modifier = Modifier.width(80.dp).heightIn(75.dp)
+                    .padding(bottom = 5.dp).padding(top = 20.dp)
+                    .align(Alignment.CenterHorizontally), shape = RoundedCornerShape(13.dp),
+                containerColor = BG,
+                contentColor = Color.White,
+                elevation = FloatingActionButtonDefaults.elevation(1.dp, 2.dp)
+            ){
+                Text(
+                    text = "Login",
+                    color = Color.White,
+                    fontSize = 14.sp,
+                    overflow = Visible)
+            }
+/*
+            Button(shape =ButtonDefaults.outlinedShape,
                 onClick = {
                    // Apicalling(username.value, password.value)
                     val intent = Intent(this@LoginActivity,MainActivity::class.java)
@@ -150,6 +173,7 @@ class LoginActivity : ComponentActivity() {
                     overflow = TextOverflow.Visible
                 )
             }
+*/
 
 
         }
