@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             BhoomiTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.background(color = Color.White)) {
+                Surface(modifier = Modifier.background(color = Color(0xFFFFFFFF))) {
                     Scaffold(
                         topBar = { Toolbar()},bottomBar = {  },
                         contentColor = Color(0xFFFFFFFF),

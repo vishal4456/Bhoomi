@@ -64,7 +64,7 @@ fun FirstScreen(navHostController: NavHostController) {
 @Composable
 fun Toolbar() {
     // val context = LocalContext.current
-    TopAppBar(modifier = Modifier.background(color = Color.White),
+    TopAppBar(modifier = Modifier.background(color = Color(0xFFFFFFFF)),
         /*backgroundColor = Color.White*/        title = {
             Text("Welcome Bhoomi", color = Color.Black, fontWeight = FontWeight.Bold)
         },
@@ -95,16 +95,17 @@ fun Toolbar() {
 @Composable
 fun RecyclerView(Data: List<MainpageData>) {
     Column(
-        Modifier
+        Modifier.padding(bottom = 10.dp)
             .background(
                 brush = Brush.verticalGradient(
                     listOf(
                         Color(0xFFFFFFFF),
+                        Color(0x2233A5FF),
                         Color(0x8A33A5FF)
                     )
                 )
             )
-            .padding(top = 50.dp),
+            .padding(top = 60.dp),
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(3), modifier = Modifier
