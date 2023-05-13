@@ -21,6 +21,14 @@
             android:theme="@style/Theme.Bhoomi">
 
         </activity>
+        <activity
+            android:name=".Activities.ListActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Bhoomi">
+
+        </activity>
+
         <activity android:name=".Activities.LoginActivity"
             android:exported="true">
             <intent-filter>

@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavHostController
+import com.bhoomi.Activities.ListActivity
 import com.bhoomi.Activities.LoginActivity
 import com.bhoomi.Navigation.StartNavigation
 import com.bhoomi.R
@@ -126,7 +127,7 @@ fun RecyclerView(Data: List<MainpageData>) {
 @Composable
 fun EachRow(box: MainpageData) {
     val context = LocalContext.current
-    val intent = Intent (context,LoginActivity::class.java)
+    val intent = Intent(context, ListActivity::class.java)
     Column(
         Modifier
             .padding(top = 20.dp, bottom = 20.dp)
@@ -136,35 +137,41 @@ fun EachRow(box: MainpageData) {
                 when (box.name) {
 
                     "Members" -> {
-                        intent.putExtra("name",box.name)
-                      //  context.startActivity(Intent(context,LoginActivity::class.java))
+                        intent.putExtra("name", box.name)
+                       //  context.startActivity(Intent(context,ListActivity::class.java))
                     }
 
                     "Socity Bank" -> {
-                        intent.putExtra("name",box.name)                    }
-                    "Family"->{
-                        context.startActivity(Intent(context,LoginActivity::class.java))
+                        intent.putExtra("name", box.name)
+                    }
+
+                    "Family" -> {
+                        intent.putExtra("name", box.name)
+                    }
+
+                    "Achievement" -> {
+                        intent.putExtra("name", box.name)
+                    }
+
+                    "Historical" -> {
+                        intent.putExtra("name", box.name)
 
                     }
-                    "Achievement"->{
-                        context.startActivity(Intent(context,LoginActivity::class.java))
 
+                    "Staff" -> {
+                        intent.putExtra("name", box.name)
                     }
-                    "Historical"->{
 
-
+                    "Water Tax" -> {
+                        intent.putExtra("name", box.name)
                     }
-                    "Staff"->{
 
+                    "Home Tax" -> {
+                        intent.putExtra("name", box.name)
                     }
-                    "Water Tax"->{
 
-                    }
-                    "Home Tax"->{
-
-                    }
-                    "Inventry"->{
-
+                    "Inventry" -> {
+                        intent.putExtra("name", box.name)
                     }
 
                 }
@@ -177,11 +184,11 @@ fun EachRow(box: MainpageData) {
             contentColor = Color.Black,
             elevation = FloatingActionButtonDefaults.elevation(1.dp, 2.dp)
         ) {
-             Icon(
-                 painter = painterResource(box.src),
-                 contentDescription = "Home"
-             )
-           /* IconButton(onClick = { *//*TODO*//* }) {
+            Icon(
+                painter = painterResource(box.src),
+                contentDescription = "Home"
+            )
+            /* IconButton(onClick = { *//*TODO*//* }) {
                 Icon(painter = painterResource(id = box.src), contentDescription = box.name)
             }*/
         }
@@ -199,10 +206,6 @@ fun EachRow(box: MainpageData) {
     */
 }
 
-@Composable
-fun checking() {
-
-}
 
 @Preview(showBackground = true)
 @Composable
