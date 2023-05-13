@@ -1,6 +1,8 @@
 package com.bhoomi.Screens
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.widget.Toast
 import android.widget.Toolbar
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,6 +25,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -30,12 +33,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavHostController
+import com.bhoomi.Activities.LoginActivity
+import com.bhoomi.Navigation.StartNavigation
 import com.bhoomi.R
 import com.bhoomi.Utils.RouteScreen
 
@@ -44,13 +51,14 @@ import com.bhoomi.Utils.RouteScreen
 @Composable
 fun FirstScreen(navHostController: NavHostController) {
 
-Surface {
-    Scaffold(){
+    Surface {
+        Scaffold() {
 
+        }
+        RecyclerView(Data = BoxData())
     }
-    RecyclerView(Data = BoxData())
 }
-}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Toolbar() {
@@ -82,27 +90,30 @@ fun Toolbar() {
     )
 
 }
+
 @Composable
 fun RecyclerView(Data: List<MainpageData>) {
     Column(
-        Modifier.background(
-            brush = Brush.verticalGradient(
-                listOf(
-                    Color(0xFFFFFFFF),
-                    Color(0x8A33A5FF)
+        Modifier
+            .background(
+                brush = Brush.verticalGradient(
+                    listOf(
+                        Color(0xFFFFFFFF),
+                        Color(0x8A33A5FF)
+                    )
                 )
             )
-        ).padding(top =50.dp ),
+            .padding(top = 50.dp),
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(3), modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp)
         ) {
-            items(Data){ box->
+            items(Data) { box ->
                 EachRow(box = box)
             }
-          
+
         }
         Box() {
             Image(painter = painterResource(id = R.drawable.wave55), contentDescription = "wave")
@@ -111,25 +122,68 @@ fun RecyclerView(Data: List<MainpageData>) {
 
     }
 }
+
 @Composable
 fun EachRow(box: MainpageData) {
-
+    val context = LocalContext.current
+    val intent = Intent (context,LoginActivity::class.java)
     Column(
         Modifier
             .padding(top = 20.dp, bottom = 20.dp)
     ) {
         FloatingActionButton(
-            onClick = { }, modifier = Modifier
+            onClick = {
+                when (box.name) {
+
+                    "Members" -> {
+                        intent.putExtra("name",box.name)
+                      //  context.startActivity(Intent(context,LoginActivity::class.java))
+                    }
+
+                    "Socity Bank" -> {
+                        intent.putExtra("name",box.name)                    }
+                    "Family"->{
+                        context.startActivity(Intent(context,LoginActivity::class.java))
+
+                    }
+                    "Achievement"->{
+                        context.startActivity(Intent(context,LoginActivity::class.java))
+
+                    }
+                    "Historical"->{
+
+
+                    }
+                    "Staff"->{
+
+                    }
+                    "Water Tax"->{
+
+                    }
+                    "Home Tax"->{
+
+                    }
+                    "Inventry"->{
+
+                    }
+
+                }
+                context.startActivity(intent)
+
+            }, modifier = Modifier
                 .padding(bottom = 5.dp)
                 .align(Alignment.CenterHorizontally), shape = RoundedCornerShape(22.dp),
             containerColor = Color.White,
             contentColor = Color.Black,
             elevation = FloatingActionButtonDefaults.elevation(1.dp, 2.dp)
         ) {
-            Icon(
-                painter = painterResource(box.src),
-                contentDescription = "Home"
-            )
+             Icon(
+                 painter = painterResource(box.src),
+                 contentDescription = "Home"
+             )
+           /* IconButton(onClick = { *//*TODO*//* }) {
+                Icon(painter = painterResource(id = box.src), contentDescription = box.name)
+            }*/
         }
         Text(
             text = box.name,
@@ -145,8 +199,13 @@ fun EachRow(box: MainpageData) {
     */
 }
 
+@Composable
+fun checking() {
+
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-   // RecyclerView(Data = BoxData())
+    // RecyclerView(Data = BoxData())
 }
