@@ -46,18 +46,17 @@ import com.bhoomi.Screens.Toolbar
 import com.bhoomi.ui.theme.BhoomiTheme
 
 class MainActivity : ComponentActivity() {
-    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "InvalidColorHexValue")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             BhoomiTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.background(color = Color(0xFFFFFFFF))) {
-                    Scaffold(
+                Surface(modifier = Modifier.background(color = Color(0xFFFFFFFF)), color = Color(0xFFFFFFFF)) {
+                    Scaffold(Modifier.background(color = Color(0xFFFFFFFF)),
                         topBar = { Toolbar() }, bottomBar = { BottomNav() },
-                        contentColor = Color(0xFFFFFFFF),
-                        containerColor = Color(0xFFFFFFFF),
+
 
 /*                        floatingActionButton = {
                             FloatingActionButton(
@@ -76,7 +75,7 @@ class MainActivity : ComponentActivity() {
                         }*/ //floatingActionButtonPosition = FabPosition.Center
                         // floatingActionButtonPosition = FabPosition.Center
                     ) {
-                        Column(modifier = Modifier.fillMaxSize()) {
+                        Column(modifier = Modifier.fillMaxSize().background(color = Color(0xFFFFFFFF))) {
                             StartNavigation()
                         }
 

@@ -56,10 +56,10 @@ fun FirstScreen(navHostController: NavHostController) {
 
 
     Surface() {
-        Scaffold() {
+Box(Modifier.background(Color(0xFFFFFFFF))) {
+    RecyclerView(Data = BoxData())
 
-        }
-        RecyclerView(Data = BoxData())
+}
     }
 }
 

@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="borderstork">#154992</color>
     <color name="light_black">#2F000000</color>
+
+    <color name="bg_home">#f8f8f8</color>
+
 </resources>
