@@ -8,6 +8,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,11 +21,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
@@ -35,6 +39,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -56,8 +61,9 @@ fun FirstScreen(navHostController: NavHostController) {
 
 
     Surface() {
-Box(Modifier.background(Color(0xFFFFFFFF))) {
+Column(Modifier.background(Color(0xFFFFFFFF))) {
     RecyclerView(Data = BoxData())
+    CardSpinWheel()
 
 }
     }
@@ -211,9 +217,45 @@ fun EachRow(box: MainpageData) {
     */
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CardSpinWheel() {
+    Box() {
+        Card(modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp)
+            .graphicsLayer {
+                shape = RoundedCornerShape(20.dp)
+                clip = true
+            }, colors =  CardDefaults.cardColors(
+
+        ),) {
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp)) {
+                Column(modifier = Modifier.padding(2.dp)) {
+                    Text(text = "Spin The Wheel", fontWeight = FontWeight.Bold, color = Color.Black, fontSize = 20.sp)
+                    Text(text = "Win Everyday", fontSize = 15.sp)
+
+                }
+                Box(modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.Bottom)) {
+                    Button(onClick = { /*TODO*/ },Modifier.align(Alignment.BottomEnd)) {
+                        Text(text = "SPIN NOW", fontWeight = FontWeight.Bold, color = Color.White )
+
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-
+CardSpinWheel()
 }
