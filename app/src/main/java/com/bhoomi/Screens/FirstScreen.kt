@@ -228,7 +228,6 @@ fun CardSpinWheel() {
                 shape = RoundedCornerShape(20.dp)
                 clip = true
             }, colors =  CardDefaults.cardColors(
-
         ),) {
             Row(modifier = Modifier
                 .fillMaxWidth()
