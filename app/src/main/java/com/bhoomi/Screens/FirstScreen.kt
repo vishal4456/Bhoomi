@@ -8,6 +8,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -52,7 +54,7 @@ import com.bhoomi.Utils.RouteScreen
 @Composable
 fun FirstScreen(navHostController: NavHostController) {
 
-    Surface {
+    Surface() {
         Scaffold() {
 
         }
@@ -95,7 +97,8 @@ fun Toolbar() {
 @Composable
 fun RecyclerView(Data: List<MainpageData>) {
     Column(
-        Modifier.padding(bottom = 10.dp)
+        Modifier
+            .padding(bottom = 10.dp)
             .background(
                 brush = Brush.verticalGradient(
                     listOf(
@@ -154,7 +157,7 @@ fun EachRow(box: MainpageData) {
                         intent.putExtra("name", box.name)
                     }
 
-                    "Historical" -> {
+                    "Historical Place" -> {
                         intent.putExtra("name", box.name)
 
                     }
@@ -211,5 +214,5 @@ fun EachRow(box: MainpageData) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    // RecyclerView(Data = BoxData())
+
 }

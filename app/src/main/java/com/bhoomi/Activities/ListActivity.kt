@@ -1,5 +1,6 @@
 package com.bhoomi.Activities
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,6 +9,7 @@ import androidx.compose.animation.core.animate
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,12 +21,19 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -47,56 +56,74 @@ import com.bhoomi.ui.theme.BG
 import com.bhoomi.ui.theme.BhoomiTheme
 
 class ListActivity : ComponentActivity() {
+    lateinit var name : String
+    @OptIn(ExperimentalMaterial3Api::class)
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val name = intent.getStringExtra("name")
+         name = intent.getStringExtra("name").toString()
         setContent {
             BhoomiTheme() {
                 Surface {
-                    when (name) {
-                        "Members" -> {
-                            UserList()
-                        }
+                    Scaffold(topBar = { Toolbar() }) {
+                        when (name) {
+                            "Members" -> {
+                                UserList()
+                            }
 
-                        "Socity Bank" -> {
-                            UserList()
-                        }
+                            "Socity Bank" -> {
+                                UserList()
+                            }
 
-                        "Family" -> {
-                            UserList()
-                        }
+                            "Family" -> {
+                                UserList()
+                            }
 
-                        "Achievement" -> {
-                            UserList()
-                        }
+                            "Achievement" -> {
+                                UserList()
+                            }
 
-                        "Historical" -> {
-                            UserList()
-                        }
+                            "Historical Place" -> {
+                                UserList()
+                            }
 
-                        "Staff" -> {
-                            UserList()
-                        }
+                            "Staff" -> {
+                                UserList()
+                            }
 
-                        "Water Tax" -> {
-                            UserList()
-                        }
+                            "Water Tax" -> {
+                                UserList()
+                            }
 
-                        "Home Tax" -> {
-                            UserList()
-                        }
+                            "Home Tax" -> {
+                                UserList()
+                            }
 
-                        "Inventry" -> {
-                            UserList()
-                        }
+                            "Inventry" -> {
+                                UserList()
+                            }
 
+                        }
                     }
                 }
             }
         }
     }
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun Toolbar() {
+        // val context = LocalContext.current
+        TopAppBar(modifier = Modifier.background(color = Color(0xFFFFFFFF)),
+            /*backgroundColor = Color.White*/        title = {
+                Text(name, color = Color.Black, fontWeight = Bold)
+            }
+        )
+
+    }
+
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Members() {
 
@@ -110,13 +137,14 @@ fun Members() {
     )
 
     Card(
+        onClick = {expended.value = !expended.value},
         modifier = Modifier
             .padding(15.dp)
             .fillMaxWidth()
             .wrapContentHeight(), elevation = CardDefaults.cardElevation(
-            defaultElevation = 10.dp
-        )
-    ) {
+            defaultElevation = 5.dp
+        ) ){
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -142,17 +170,8 @@ fun Members() {
                     Text(text = "Full Name: ", fontWeight = FontWeight.Bold)
                     Text(text = "Vishal Vidhate")
                 }
-
-
-                OutlinedButton(
-                    onClick = { expended.value = !expended.value },
-                    colors = ButtonDefaults.buttonColors(BG), modifier = Modifier
-                        .padding(start = 10.dp)
-                        .padding(top = 5.dp)
-                ) {
-                    Text(if (expended.value) "Profile" else "ViewProfile")
-                }
                 if (expended.value) {
+
                     Column(modifier = Modifier.padding(bottom = extraPadding.coerceAtLeast(0.dp))) {
 
                         Row() {
@@ -174,8 +193,13 @@ fun Members() {
 
                 }
 
+
+
+
+
             }
         }
+
     }
 }
 
@@ -205,13 +229,14 @@ Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
 
 }
 */
-    LazyColumn {
+    LazyColumn (modifier = Modifier.padding(top = 55.dp)){
         items((users)) { User ->
             Members()
 
         }
     }
 }
+
 
 
 @Preview(showBackground = true)
