@@ -39,6 +39,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -227,10 +228,12 @@ fun CardSpinWheel() {
         Card(modifier = Modifier
             .fillMaxWidth()
             .padding(20.dp)
+            .shadow(elevation = 4.dp, shape = RoundedCornerShape(15.dp))
             .graphicsLayer {
                 shape = RoundedCornerShape(20.dp)
                 clip = true
             }, colors =  CardDefaults.cardColors(
+            Color.White
         ),) {
             Row(modifier = Modifier
                 .fillMaxWidth()
