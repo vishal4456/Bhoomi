@@ -85,6 +85,7 @@ class ListActivity : ComponentActivity() {
 
                             "Historical Place" -> {
                                 UserList()
+
                             }
 
                             "Staff" -> {

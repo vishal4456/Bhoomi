@@ -68,7 +68,6 @@ class LoginActivity : ComponentActivity() {
                     LoginScreen()
                 }
 
-
             }
         }
     }
