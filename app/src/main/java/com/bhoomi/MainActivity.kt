@@ -55,7 +55,6 @@ class MainActivity : ComponentActivity() {
                         topBar = { Toolbar()},bottomBar = { 
                                                           BottomAppBar() {
 
-
                                                           }
                         },
                         contentColor = Color(0xFFFFFFFF),
