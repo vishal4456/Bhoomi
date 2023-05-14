@@ -21,6 +21,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -53,6 +55,7 @@ import com.bhoomi.Activities.LoginActivity
 import com.bhoomi.Navigation.StartNavigation
 import com.bhoomi.R
 import com.bhoomi.Utils.RouteScreen
+import com.bhoomi.ui.theme.BG
 
 @ExperimentalMaterial3Api
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -240,7 +243,7 @@ fun CardSpinWheel() {
                 Box(modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.Bottom)) {
-                    Button(onClick = { /*TODO*/ },Modifier.align(Alignment.BottomEnd)) {
+                    Button(onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors(BG) , modifier = Modifier.align(Alignment.BottomEnd)) {
                         Text(text = "SPIN NOW", fontWeight = FontWeight.Bold, color = Color.White )
 
                     }
