@@ -52,7 +52,11 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.background(color = Color.White)) {
                     Scaffold(
-                        topBar = { Toolbar()},bottomBar = {  },
+                        topBar = { Toolbar()},bottomBar = { 
+                                                          BottomAppBar() {
+                                                              
+                                                          }
+                        },
                         contentColor = Color(0xFFFFFFFF),
                         containerColor = Color(0xFFFFFFFF)
 /*                        floatingActionButton = {
@@ -81,6 +85,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+/*
     @Composable
     fun BottomNav() {
         var currentSelectedScrrenId by rememberSaveable() { mutableStateOf(0) }
@@ -92,7 +97,7 @@ class MainActivity : ComponentActivity() {
             modifier = Modifier.fillMaxWidth()
 
         ) {
-            /*BottomNavigation(
+            BottomNavigation(
             contentColor = Color.White,
             backgroundColor = Color.White,
             modifier = Modifier.fillMaxWidth(),
@@ -140,17 +145,80 @@ class MainActivity : ComponentActivity() {
                     )
                 })
 
-        }*/
-
         }
+        }
+    }
+*/
+}
+@Composable
+fun BottomNav() {
+    var currentSelectedScrrenId by rememberSaveable() { mutableStateOf(0) }
+    //val items = listOf(Screen.Contact, Screen.Scan, Screen.Per, Screen.Menu)
+
+    BottomAppBar(
+        containerColor = Color.White, contentColor = Color.LightGray,
+        tonalElevation = 5.dp,
+        modifier = Modifier.fillMaxWidth()
+
+    ) {
+        /*BottomNavigation(
+        contentColor = Color.White,
+        backgroundColor = Color.White,
+        modifier = Modifier.fillMaxWidth(),
+        elevation = 0.dp
+    ) {
+        NavigationRailItem(selected = currentSelectedScrrenId == 1,
+            selectedContentColor = Color.Black,
+            unselectedContentColor = Color.LightGray,
+            onClick = { currentSelectedScrrenId = DashbordIcons.Contact.id }, icon = {
+                Icon(
+                    painter = painterResource(id = DashbordIcons.Contact.selectedIconId),
+                    contentDescription = DashbordIcons.Contact.title
+
+                )
+            })
+        NavigationRailItem(selected = currentSelectedScrrenId == 2,
+            selectedContentColor = Color.Black,
+            unselectedContentColor = Color.Gray,
+            onClick = { currentSelectedScrrenId = DashbordIcons.Menu.id }, icon = {
+                Icon(
+                    painter = painterResource(id = DashbordIcons.Menu.selectedIconId),
+                    contentDescription = DashbordIcons.Menu.title
+
+                )
+            })
+        Spacer(modifier = Modifier.padding(start = 10.dp))
+        NavigationRailItem(selected = currentSelectedScrrenId == 3,
+            selectedContentColor = Color.Black,
+            unselectedContentColor = Color.Gray,
+            onClick = { currentSelectedScrrenId = DashbordIcons.Scan.id }, icon = {
+                Icon(
+                    painter = painterResource(id = DashbordIcons.Scan.selectedIconId),
+                    contentDescription = DashbordIcons.Scan.title
+
+                )
+            })
+        NavigationRailItem(selected = currentSelectedScrrenId == 4,
+            selectedContentColor = Color.Black,
+            unselectedContentColor = Color.Gray,
+            onClick = { currentSelectedScrrenId = DashbordIcons.Per.id }, icon = {
+                Icon(
+                    painter = painterResource(id = DashbordIcons.Per.selectedIconId),
+                    contentDescription = DashbordIcons.Per.title
+
+                )
+            })
+
+    }*/
+
     }
 }
 
-/*
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     BhoomiTheme {
-
+        BottomNav()
     }
-}*/
+}

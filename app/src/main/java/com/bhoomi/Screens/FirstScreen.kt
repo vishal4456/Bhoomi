@@ -48,7 +48,10 @@ Surface {
     Scaffold(){
 
     }
-    RecyclerView(Data = BoxData())
+    Button(onClick = { navHostController.navigate(RouteScreen.SecondScreen.route) }, modifier = Modifier.padding(top = 200.dp)) {
+        Text(text = "HiiBro")
+    }
+  //  RecyclerView(Data = BoxData())
 }
 }
 @OptIn(ExperimentalMaterial3Api::class)
@@ -85,14 +88,16 @@ fun Toolbar() {
 @Composable
 fun RecyclerView(Data: List<MainpageData>) {
     Column(
-        Modifier.background(
-            brush = Brush.verticalGradient(
-                listOf(
-                    Color(0xFFFFFFFF),
-                    Color(0x8A33A5FF)
+        Modifier
+            .background(
+                brush = Brush.verticalGradient(
+                    listOf(
+                        Color(0xFFFFFFFF),
+                        Color(0x8A33A5FF)
+                    )
                 )
             )
-        ).padding(top =50.dp ),
+            .padding(top = 50.dp),
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(3), modifier = Modifier
