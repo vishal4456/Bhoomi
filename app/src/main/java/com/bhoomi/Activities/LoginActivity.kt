@@ -13,6 +13,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -110,9 +111,9 @@ class LoginActivity : ComponentActivity() {
                 leadingIcon = {
                     Icon(Icons.Default.Person, contentDescription = "LoginId")
                 },
-                modifier = Modifier
+                modifier = Modifier.fillMaxWidth()
                     .height(70.dp)
-                    .padding(top = 10.dp)
+                    .padding(top = 10.dp, start = 15.dp, end = 15.dp)
                     .align(Alignment.CenterHorizontally),
                 shape = RoundedCornerShape(CornerSize(10.dp))
             )
@@ -127,9 +128,9 @@ class LoginActivity : ComponentActivity() {
                 leadingIcon = {
                     Icon(Icons.Default.Lock, contentDescription = "Password")
                 },
-                modifier = Modifier
+                modifier = Modifier.fillMaxWidth()
                     .height(70.dp)
-                    .padding(top = 10.dp)
+                    .padding(top = 10.dp, start = 15.dp, end = 15.dp)
                     .align(Alignment.CenterHorizontally),
                 shape = RoundedCornerShape(CornerSize(10.dp))
             )
@@ -140,7 +141,7 @@ class LoginActivity : ComponentActivity() {
                     val intent = Intent(this@LoginActivity,MainActivity::class.java)
                     startActivity(intent)
                 }, modifier = Modifier.width(80.dp).heightIn(75.dp)
-                    .padding(bottom = 5.dp).padding(top = 20.dp)
+                    .padding(bottom = 5.dp, top = 22.dp)
                     .align(Alignment.CenterHorizontally), shape = RoundedCornerShape(13.dp),
                 containerColor = BG,
                 contentColor = Color.White,

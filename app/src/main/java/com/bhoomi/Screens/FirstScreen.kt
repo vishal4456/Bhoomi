@@ -119,12 +119,12 @@ fun RecyclerView(Data: List<MainpageData>) {
                     )
                 )
             )
-            .padding(top = 60.dp),
+            .padding(top = 50.dp),
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(3), modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = 20.dp).padding(top = 40.dp, bottom = 10.dp)
         ) {
             items(Data) { box ->
                 EachRow(box = box)
