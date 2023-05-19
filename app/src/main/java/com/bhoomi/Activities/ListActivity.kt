@@ -61,7 +61,7 @@ class ListActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         name = intent.getStringExtra("name").toString()
         setContent {
-            BhoomiTheme {
+            BhoomiTheme() {
                 Surface {
                     Scaffold(containerColor = BG,topBar = { Toolbar() }) {
                         when (name) {
