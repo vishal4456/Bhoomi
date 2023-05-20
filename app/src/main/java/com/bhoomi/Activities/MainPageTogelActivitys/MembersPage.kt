@@ -45,7 +45,7 @@ fun MembersPage(name:String) {
 @OptIn(ExperimentalFoundationApi::class, ExperimentalPagerApi::class)
 @Composable
 fun Member(paddingValues: PaddingValues) {
-    val tabItem= listOf("movie","web")
+    val tabItem= listOf("Members","Staff")
     val pagerState= com.google.accompanist.pager.rememberPagerState(tabItem.size)
     val coroutineScope= rememberCoroutineScope()
     Column(Modifier.padding(paddingValues)) {
