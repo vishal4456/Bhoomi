@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -32,6 +33,7 @@ import com.bhoomi.ui.theme.BG
 import com.bhoomi.ui.theme.BGLite
 import com.bhoomi.ui.theme.Denim
 import com.bhoomi.ui.theme.Melibu
+import com.bhoomi.ui.theme.White40Tra
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import kotlinx.coroutines.launch
@@ -50,9 +52,9 @@ fun Member(paddingValues: PaddingValues) {
     val coroutineScope= rememberCoroutineScope()
     Column(Modifier.padding(paddingValues)) {
         androidx.compose.material.TabRow(selectedTabIndex = pagerState.currentPage,
-            backgroundColor = Melibu,
-            modifier = Modifier
-                .padding(start = 20.dp, end = 20.dp)
+            backgroundColor = White40Tra,
+            modifier = Modifier.height(40.dp)
+                .padding(start = 50.dp, end = 50.dp)
                 .background(color = Color.Transparent)
                 .clip(shape = RoundedCornerShape(30.dp)),
 
@@ -69,7 +71,7 @@ fun Member(paddingValues: PaddingValues) {
                     Animatable(Denim)
                 }
                 LaunchedEffect(pagerState.currentPage == index) {
-                    color.animateTo(if (pagerState.currentPage == index) Color.White else Melibu)
+                    color.animateTo(if (pagerState.currentPage == index) Color.White else Color.Transparent)
                 }
                 Tab(
                     text = {

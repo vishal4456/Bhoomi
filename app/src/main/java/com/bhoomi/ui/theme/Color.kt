@@ -16,3 +16,6 @@ val CardBG = Color(0x8AE5F3FF)
 val Brown = Color(0xFFfc9538)
 val Denim= Color(0xFF1a56e8)
 val Melibu= Color(0xFF8AABFE)
+val BG40Tra = Color(0x4D154992)
+val White40Tra = Color(0x66FFFFFF)
+
