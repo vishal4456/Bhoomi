@@ -1,6 +1,5 @@
 package com.bhoomi.Activities.MainPageTogelActivitys
 
-import android.annotation.SuppressLint
 import androidx.compose.animation.Animatable
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -15,11 +14,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Tab
+import androidx.compose.material.TabRow
+import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -27,31 +26,26 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bhoomi.ui.theme.BG
 import com.bhoomi.ui.theme.BGLite
 import com.bhoomi.ui.theme.Denim
-import com.bhoomi.ui.theme.Melibu
 import com.bhoomi.ui.theme.White40Tra
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import kotlinx.coroutines.launch
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MembersPage(name:String) {
-
-}
 @OptIn(ExperimentalFoundationApi::class, ExperimentalPagerApi::class)
 @Composable
-fun Member(paddingValues: PaddingValues) {
+fun SocityBank(paddingValues: PaddingValues) {
     val tabItem= listOf("Members","Staff")
     val pagerState= com.google.accompanist.pager.rememberPagerState(tabItem.size)
     val coroutineScope= rememberCoroutineScope()
     Column(Modifier.padding(paddingValues)) {
-        androidx.compose.material.TabRow(selectedTabIndex = pagerState.currentPage,
+        TabRow(selectedTabIndex = pagerState.currentPage,
             backgroundColor = White40Tra,
             modifier = Modifier.height(35.dp)
                 .padding(start = 60.dp, end = 60.dp)
@@ -59,7 +53,7 @@ fun Member(paddingValues: PaddingValues) {
                 .clip(shape = RoundedCornerShape(30.dp)),
 
             indicator = { tabPositions ->
-                androidx.compose.material.TabRowDefaults.Indicator(
+                TabRowDefaults.Indicator(
                     Modifier.pagerTabIndicatorOffset(pagerState, tabPositions = tabPositions),
                     color = Color.Transparent
                 )
@@ -77,9 +71,9 @@ fun Member(paddingValues: PaddingValues) {
                     text = {
                         Text(
                             text = title, style = if (pagerState.currentPage == index)
-                                androidx.compose.ui.text.TextStyle(color = BG, fontSize = 15.sp)
+                                TextStyle(color = BG, fontSize = 15.sp)
                             else
-                                androidx.compose.ui.text.TextStyle(color = Color.White, fontSize = 15.sp)
+                                TextStyle(color = Color.White, fontSize = 15.sp)
                         )
                     },
                     selected = pagerState.currentPage == index,
@@ -105,7 +99,7 @@ fun Member(paddingValues: PaddingValues) {
                 .fillMaxHeight()
                 .padding(top = 20.dp, start = 5.dp, end = 5.dp)
         ) {
-            com.google.accompanist.pager.HorizontalPager(
+            HorizontalPager(
                 count = tabItem.size, state = pagerState,
                 modifier = Modifier
                     .fillMaxSize()
@@ -123,6 +117,3 @@ fun Member(paddingValues: PaddingValues) {
         }
     }
 }
-
-
-

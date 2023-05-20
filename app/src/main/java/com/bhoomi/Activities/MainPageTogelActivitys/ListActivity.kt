@@ -1,8 +1,11 @@
 package com.bhoomi.Activities.MainPageTogelActivitys
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
@@ -27,12 +30,14 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -74,14 +79,21 @@ class ListActivity : ComponentActivity() {
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Toolbar(name: String) {
+fun Toolbar(name: String,context:Context) {
     // val context = LocalContext.current
+    val activity = (LocalContext.current as? Activity)
     TopAppBar(colors = TopAppBarDefaults.smallTopAppBarColors(BG),
-        navigationIcon = { Icon( Icons.Filled.ArrowBack,
-            modifier = Modifier.size(30.dp),
-            tint = Color.White,
-            contentDescription = "Test"
-        )},
+        navigationIcon = { IconButton(
+            onClick = {
+                activity?.finish()
+             },
+        ){
+            Icon(Icons.Filled.ArrowBack,
+                modifier = Modifier.size(30.dp),
+                tint = Color.White,
+                contentDescription = "Test")
+        }
+        },
         modifier = Modifier.background(color = Color(0xFFFFFFFF)),
         /*backgroundColor = Color.White*/        title = {
             Text(name, color = Color.White, fontWeight = Bold)
@@ -360,5 +372,5 @@ fun FamilyData(){
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-   Toolbar("onkar")
+
 }

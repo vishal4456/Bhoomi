@@ -25,14 +25,14 @@ import com.bhoomi.ui.theme.BG
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ListActivityUi(name:String,context:Context) {
-    Scaffold(containerColor = BG,topBar = { Toolbar(name) }) {
+    Scaffold(containerColor = BG,topBar = { Toolbar(name,context) }) {
         when (name) {
             "Members" -> {
                 Member(it)
             }
 
             "Socity Bank" -> {
-                UserList()
+                SocityBank(it)
             }
 
             "Family" -> {
@@ -40,11 +40,11 @@ fun ListActivityUi(name:String,context:Context) {
             }
 
             "Achievement" -> {
-                FamilyData()
+               // FamilyData()
             }
 
             "Historical Place" -> {
-                UserList()
+              //  UserList()
             }
 
             "Staff" -> {
@@ -60,7 +60,7 @@ fun ListActivityUi(name:String,context:Context) {
             }
 
             "Inventry" -> {
-                UserList()
+                Inventry(it)
             }
 
         }
