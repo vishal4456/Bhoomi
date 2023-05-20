@@ -1,4 +1,4 @@
-package com.bhoomi.Activities
+package com.bhoomi.Activities.MainPageTogelActivitys
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -41,6 +41,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
@@ -63,70 +64,32 @@ class ListActivity : ComponentActivity() {
         setContent {
             BhoomiTheme() {
                 Surface {
-                    Scaffold(containerColor = BG,topBar = { Toolbar() }) {
-                        when (name) {
-                            "Members" -> {
-                                UserList()
-                            }
-
-                            "Socity Bank" -> {
-                                UserList()
-                            }
-
-                            "Family" -> {
-                                FamilyData()
-                            }
-
-                            "Achievement" -> {
-                               FamilyData()
-                            }
-
-                            "Historical Place" -> {
-                                UserList()
-                            }
-
-                            "Staff" -> {
-                                UserList()
-                            }
-
-                            "Water Tax" -> {
-                                UserList()
-                            }
-
-                            "Home Tax" -> {
-                                UserList()
-                            }
-
-                            "Inventry" -> {
-                                UserList()
-                            }
-
-                        }
-                    }
+                    ListActivityUi(name,LocalContext.current)
                 }
             }
         }
     }
 
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    fun Toolbar() {
-        // val context = LocalContext.current
-        TopAppBar(colors = TopAppBarDefaults.smallTopAppBarColors(BG),
-            navigationIcon = { Icon( Icons.Filled.ArrowBack,
+
+}
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun Toolbar(name: String) {
+    // val context = LocalContext.current
+    TopAppBar(colors = TopAppBarDefaults.smallTopAppBarColors(BG),
+        navigationIcon = { Icon( Icons.Filled.ArrowBack,
             modifier = Modifier.size(30.dp),
             tint = Color.White,
             contentDescription = "Test"
         )},
-            modifier = Modifier.background(color = Color(0xFFFFFFFF)),
-            /*backgroundColor = Color.White*/        title = {
-                Text(name, color = Color.White, fontWeight = Bold)
-            }
-        )
-
-    }
+        modifier = Modifier.background(color = Color(0xFFFFFFFF)),
+        /*backgroundColor = Color.White*/        title = {
+            Text(name, color = Color.White, fontWeight = Bold)
+        }
+    )
 
 }
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -397,5 +360,5 @@ fun FamilyData(){
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-   FamilyData()
+   Toolbar("onkar")
 }
