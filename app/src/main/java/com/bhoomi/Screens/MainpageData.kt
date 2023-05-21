@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import com.bhoomi.R
 
 data class MainpageData(val id :Int,val name : String, val src:Int = 0)
+
     fun BoxData():List<MainpageData>{
         return listOf(MainpageData(0,"Members",src= R.drawable.ic_home),
             MainpageData(1,"Socity Bank",src=R.drawable.ic_bank),
